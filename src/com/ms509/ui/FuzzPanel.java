@@ -809,6 +809,7 @@ public class FuzzPanel extends JPanel {
 							}
 							add.setEnabled(true);
 						}
+						br.close();
 						for (String d : iset) // 去重
 						{
 							Vector data = new Vector();
@@ -852,8 +853,8 @@ public class FuzzPanel extends JPanel {
 							bw.write(domain);
 							bw.newLine();
 						}
+						bw.flush();
 						bw.close();
-						fw.close();
 						lstatus.setText("导出当前域名成功");
 						status.setText("");
 					} catch (IOException e1) {
@@ -891,8 +892,8 @@ public class FuzzPanel extends JPanel {
 							bw.write(domain);
 							bw.newLine();
 						}
+						bw.flush();
 						bw.close();
-						fw.close();
 						lstatus.setText("导出选中域名成功");
 						status.setText("");
 					} catch (IOException e1) {
@@ -953,6 +954,7 @@ public class FuzzPanel extends JPanel {
 					list.add(line + "." + root);
 				}
 			}
+			br.close();
 		} catch (Exception e2) {
 		}
 		return list;

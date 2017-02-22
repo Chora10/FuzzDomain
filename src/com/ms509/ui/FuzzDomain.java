@@ -29,7 +29,7 @@ public class FuzzDomain {
 		System.setProperty ("jsse.enableSNIExtension", "false");	// 防止javax.net.ssl.SSLProtocolException: handshake alert:  unrecognized_name异常
 		Toolkit t = Toolkit.getDefaultToolkit();
 		Dimension d = t.getScreenSize();
-		main = new JFrame("FuzzDomain");
+		main = new JFrame("FuzzDomain 1.0 beta");
 		main.setIconImage(new ImageIcon(getClass().getResource(
 				"/com/ms509/images/main.png")).getImage());
 		main.setSize(910, 480);
