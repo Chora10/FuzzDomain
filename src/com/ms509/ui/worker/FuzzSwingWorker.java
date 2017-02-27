@@ -25,6 +25,11 @@ public class FuzzSwingWorker extends SwingWorker<Void, Integer> {
 	private static volatile boolean canceled = false;
 	private static volatile boolean paused = false;
 	private static Set<String> domains = new LinkedHashSet<String>();
+	
+	private synchronized void workDone()
+	{
+		count++;
+	}
 
 	public static boolean isCanceled() {
 		return canceled;
@@ -128,10 +133,8 @@ public class FuzzSwingWorker extends SwingWorker<Void, Integer> {
 
 	protected void process(List<Integer> chunks) {
 		for (Integer i : chunks) {
-			int num = ++count;
-			if (num <= l.size()) {
-				fp.getStatus().setText("当前" + num + "/" + "总共" + l.size());
-			}
+			workDone();
+			fp.getStatus().setText("当前" + count + "/" + "总共" + l.size());
 		}
 	}
 }
